@@ -6,6 +6,7 @@
 - Angular version used: 17.2.0
 
 Setup instructions
+
   - Clone the repository: 
       git clone https://github.com/malkocmuhamed/ArtiAngularTask.git
       or Open with Github desktop
@@ -50,6 +51,7 @@ Why I didn't choose Long polling or SSE?
 Socket.IO works seamlessly with Angular through the community-supported ngx-socket-io library. This wrapper provides a reactive interface using RxJS, which aligns naturally with Angular’s design philosophy.
 
 Using ngx-socket-io, I can:
+
     - Inject the socket as a service
     - Subscribe to socket events using observables
     - Automatically unsubscribe on component destruction
@@ -61,22 +63,26 @@ Using ngx-socket-io, I can:
 This would allow the chatbot to generate intelligent, context-aware responses and create a more human-like conversational experience.
 
 With more time, I would implement a real backend with the following features:
+
     - Secure user authentication and session management
     - API endpoints for storing chatbot configurations and uploaded knowledge base files
     - Persistent chat history in a database (e.g. MongoDB or PostgreSQL)
     - Integration with real-time WebSocket servers for live messaging
 
 The app currently supports one chatbot configuration at a time. With more time, I would expand support for:
+
     - Managing multiple chatbots under a single account
     - Assigning different knowledge bases per chatbot
     - Creating unique bot personalities with switchable profiles
     - Enabling real-time collaboration between users and bots in separate rooms (using Socket.IO namespaces and rooms)
 
 The current implementation allows uploading and listing text files. I would improve this by:
+
     - Supporting more file types (e.g., Markdown, CSV)
     - Previewing file content directly in the UI
 
 To improve the chat experience, I would add:
+
     - Typing indicators ("Bot is typing...")
     - Message status (delivered, read)
     - Date separators and groupings in the chat history
@@ -89,23 +95,25 @@ With more time, my focus would be on turning this chatbot application from a sol
 Features that are currently implemented that are not listed in assignment requirements: 
 
   Optional features: 
+  
     - Responsive mobile friendly layout
     - Chatbot config and uploaded files data stored in local storage
     - Angular material used for styling
   
   Not optional - not required - but seemed preferable features to implement
-   - Update chatbot data
-   - Delete chatbot
-   - Chatbot name and description validation and error messages
-   - Retreive chatbot data on page init from local storage
-   - Header for better ui
-   - Chat simulator widget - opens chat on click - for better ux
-   - Chatbot name in chat and messages
-   - Date and time of sent and received messages
-   - Save chat history to local storage
-   - Chat history is present until chat clearance 
-   - Clear chat button
-   - Toastr messages after actions (Create chatbot, update chatbot, delete chatbot, upload file, remove file, clear chat)
-   - Tooltips on icons with messages (Remove file, clear chat)
+  
+     - Update chatbot data
+     - Delete chatbot
+     - Chatbot name and description validation and error messages
+     - Retreive chatbot data on page init from local storage
+     - Header for better ui
+     - Chat simulator widget - opens chat on click - for better ux
+     - Chatbot name in chat and messages
+     - Date and time of sent and received messages
+     - Save chat history to local storage
+     - Chat history is present until chat clearance 
+     - Clear chat button
+     - Toastr messages after actions (Create chatbot, update chatbot, delete chatbot, upload file, remove file, clear chat)
+     - Tooltips on icons with messages (Remove file, clear chat)
 
 
