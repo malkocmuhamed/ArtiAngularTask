@@ -26,11 +26,15 @@ Suggestion for a real-time implementation to handle chat responses
 2. Why did you choose it?
 
   The best approach I would use are WebSockets. Websockets provide the performance, flexibility, and bi-directional communication that modern chat interfaces require. Unlike long polling or SSE, WebSockets are purpose-built for dynamic, interactive applications, and they integrate cleanly with Angular’s architecture.
+  
 Why I didn't choose Long polling or SSE? 
   Long polling it's simple to implement, but it's also inefficient. Every message exchange incurs the cost of opening and closing a new HTTP request. This approach doesn't scale well and introduces latency.
   SSE provides a persistent connection from the server to the client, allowing the server to push messages as they arrive. It's more efficient than long polling for downstream-only communication. However, it's strictly one-way: the client can't push messages through the same channel. For a chat application, where messages need to flow both ways, SSE falls short.
+  
   WebSockets are built specifically for full-duplex, low-latency communication over a single persistent connection. Once the handshake is complete, both the client and server can send data to each other independently at any time. This is ideal for a chat system where both users and the chatbot need to exchange messages in real time, which is the case in this chatbot app.
+  
   The benefits I get with WebSockets include:
+  
     - True two-way communication
     - Minimal latency
     - A single persistent connection per client 
@@ -39,9 +43,12 @@ Why I didn't choose Long polling or SSE?
 3. Any libraries/tools you'd consider using in Angular?
 
   When I decided to add real-time capabilities to my Angular chatbot application, the WebSocket protocol was the clear choice for transport. However, working directly with raw WebSockets requires a lot of handling of connection management, reconnections, message formatting, and fallbacks.
+  
   To solve these challenges, I chose Socket.IO, a library that builds on top of WebSockets and abstracts many of the implementation complexities. It provided the stability, structure, and developer experience I needed to confidently implement reliable two-way messaging between my client and server.
+  
   Socket.IO uses a simple event-driven model. I can emit and listen for named events like 'chatMessage', 'userTyping', or 'botResponse' instead of parsing raw messages. This aligns well with Angular’s component and service architecture, making the codebase easier to read, maintain, and extend.
 Socket.IO works seamlessly with Angular through the community-supported ngx-socket-io library. This wrapper provides a reactive interface using RxJS, which aligns naturally with Angular’s design philosophy.
+
 Using ngx-socket-io, I can:
     - Inject the socket as a service
     - Subscribe to socket events using observables
