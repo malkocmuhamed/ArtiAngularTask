@@ -79,3 +79,16 @@ input[matInput] {
   display: flex;
   flex-direction: column;
 }
+
+.send-button {
+  min-width: 50px;
+}
+
+.title-clear {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-send-icon {
+  margin: auto;
+}

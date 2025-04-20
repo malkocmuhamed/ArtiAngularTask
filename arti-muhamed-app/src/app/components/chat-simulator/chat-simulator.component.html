@@ -1,6 +1,17 @@
 <div class="simulator-container">
   <mat-card class="upload-card">
-    <mat-card-title class="card-title">Chat Simulator </mat-card-title>
+    <div class="title-clear">
+      <mat-card-title class="card-title">Chat Simulator </mat-card-title>
+      <button
+        *ngIf="chatHistory.length"
+        class="send-button"
+        matTooltip="Clear chat"
+        mat-raised-button
+        (click)="clearChat()"
+      >
+        <mat-icon class="clear-send-icon">delete_sweep</mat-icon>
+      </button>
+    </div>
     <p *ngIf="chatbotConfig">Chat with {{ chatbotConfig.name }}!</p>
     <mat-card-content class="chat-history">
       <div *ngFor="let msg of chatHistory" [ngClass]="msg.sender">
@@ -25,8 +36,13 @@
         (keyup.enter)="sendMessage()"
         placeholder="Type your message..."
       />
-      <button mat-raised-button color="primary" (click)="sendMessage()">
-        Send
+      <button
+        class="send-button"
+        mat-raised-button
+        color="primary"
+        (click)="sendMessage()"
+      >
+        <mat-icon class="clear-send-icon">send</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>

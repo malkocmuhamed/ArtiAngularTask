@@ -26,6 +26,7 @@
               matInput
               formControlName="description"
               rows="4"
+              required
             ></textarea>
             <mat-error
               *ngIf="chatbotForm.controls['description'].hasError('required')"

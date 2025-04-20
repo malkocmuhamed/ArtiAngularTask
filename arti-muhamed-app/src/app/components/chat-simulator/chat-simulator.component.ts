@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { Chatbot } from '../../models/chatbot.model';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { StoredFile } from '../../models/stored-file.model';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-chat-simulator',
@@ -18,6 +20,8 @@ import { StoredFile } from '../../models/stored-file.model';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
   ],
   templateUrl: './chat-simulator.component.html',
   styleUrl: './chat-simulator.component.scss',
@@ -36,6 +40,9 @@ export class ChatSimulatorComponent implements OnInit {
       personality: 0.5,
       description: '',
     };
+
+    this.storedFiles = this.localStorageService.getFiles();
+    this.chatHistory = this.localStorageService.getChatHistory();
   }
 
   sendMessage(): void {
@@ -48,6 +55,7 @@ export class ChatSimulatorComponent implements OnInit {
       created_timestamp: new Date(),
     };
     this.chatHistory.push(userMessage);
+    this.localStorageService.saveChatHistory(this.chatHistory);
     this.userInput = '';
 
     setTimeout(() => {
@@ -57,7 +65,13 @@ export class ChatSimulatorComponent implements OnInit {
         created_timestamp: new Date(),
       };
       this.chatHistory.push(botMessage);
+      this.localStorageService.saveChatHistory(this.chatHistory);
     }, 2000);
+  }
+
+  clearChat(): void {
+    this.chatHistory = [];
+    this.localStorageService.clearChatHistory();
   }
 
   generateFakeBotReply(userMsg: string): string {
