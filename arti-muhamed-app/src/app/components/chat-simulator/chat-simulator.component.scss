@@ -1,0 +1,77 @@
+.chat-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 1rem;
+}
+
+.chat-box {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.chat-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.user,
+.bot {
+  display: flex;
+}
+
+.user {
+  justify-content: flex-end;
+}
+
+.bot {
+  justify-content: flex-start;
+}
+
+.bubble {
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  max-width: 70%;
+  word-wrap: break-word;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: right;
+  margin-top: 0.25rem;
+}
+
+.user .bubble {
+  background-color: #1976d2;
+  color: white;
+}
+
+.bot .bubble {
+  background-color: #e0e0e0;
+  color: black;
+}
+
+.input-area {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+input[matInput] {
+  flex: 1;
+  height: 30px;
+}
+
+.upload-card {
+  justify-self: center;
+  margin-top: 30px;
+}

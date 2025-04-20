@@ -5,92 +5,102 @@
     locally!
   </p>
 
-  <form
-    class="form-container"
-    [formGroup]="chatbotForm"
-    (ngSubmit)="saveData()"
-  >
-    <mat-card>
-      <mat-card-title class="card-title">Configure Your Chatbot</mat-card-title>
-      <mat-card-content>
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Chatbot Name</mat-label>
-          <input matInput formControlName="name" required />
-          <mat-error *ngIf="chatbotForm.controls['name'].hasError('required')">
-            Name is required.
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Description</mat-label>
-          <textarea matInput formControlName="description" rows="4"></textarea>
-          <mat-error
-            *ngIf="chatbotForm.controls['description'].hasError('required')"
-          >
-            Description is required.
-          </mat-error>
-        </mat-form-field>
-
-        <div class="full-width slider-section">
-          <label class="slider-label"
-            >Personality:
-            {{ chatbotForm.value.personality | number : "1.1-1" }}</label
-          >
-          <mat-slider
-            class="slider"
-            [max]="1"
-            [min]="0"
-            [step]="0.1"
-            [discrete]="true"
-          >
-            <input matSliderThumb formControlName="personality" #slider />
-          </mat-slider>
-        </div>
-      </mat-card-content>
-
-      <mat-card-actions>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="!chatbotForm.valid"
-        >
-          Save Chatbot
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-
-  <mat-card class="upload-card">
-    <mat-card-title class="card-title"
-      >Upload Knowledge Base Files</mat-card-title
+  <div class="form-upload-wrapper">
+    <form
+      class="form-container"
+      [formGroup]="chatbotForm"
+      (ngSubmit)="saveData()"
     >
-    <mat-card-content>
-      <input
-        type="file"
-        id="file-upload"
-        accept=".txt"
-        multiple
-        (change)="onFileSelected($event)"
-        style="display: none"
-      />
+      <mat-card>
+        <mat-card-title class="card-title"
+          >Configure Your Chatbot</mat-card-title
+        >
+        <mat-card-content>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Chatbot Name</mat-label>
+            <input matInput formControlName="name" required />
+            <mat-error
+              *ngIf="chatbotForm.controls['name'].hasError('required')"
+            >
+              Name is required.
+            </mat-error>
+          </mat-form-field>
 
-      <label for="file-upload" class="upload-button">Upload Files</label>
-      <mat-divider class="divider"></mat-divider>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              rows="4"
+            ></textarea>
+            <mat-error
+              *ngIf="chatbotForm.controls['description'].hasError('required')"
+            >
+              Description is required.
+            </mat-error>
+          </mat-form-field>
 
-      <h4 *ngIf="uploadedFiles.length">Uploaded Files:</h4>
-      <mat-list *ngIf="uploadedFiles.length">
-        <div class="file-item" *ngFor="let file of uploadedFiles">
-          <span>{{ file.name }}</span>
-          <mat-icon
-            color="warn"
-            (click)="deleteFile(file.name)"
-            aria-label="Delete file"
-            matTooltip="Delete file"
-            >delete</mat-icon
+          <div class="full-width slider-section">
+            <label class="slider-label"
+              >Personality:
+              {{ chatbotForm.value.personality | number : "1.1-1" }}</label
+            >
+            <mat-slider
+              class="slider"
+              [max]="1"
+              [min]="0"
+              [step]="0.1"
+              [discrete]="true"
+            >
+              <input matSliderThumb formControlName="personality" #slider />
+            </mat-slider>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!chatbotForm.valid"
           >
-        </div>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
+            Save Chatbot
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+
+    <mat-card class="upload-card-file">
+      <mat-card-title class="card-title"
+        >Upload Knowledge Base Files</mat-card-title
+      >
+      <mat-card-content>
+        <input
+          type="file"
+          id="file-upload"
+          accept=".txt"
+          multiple
+          (change)="onFileSelected($event)"
+          style="display: none"
+        />
+
+        <label for="file-upload" class="upload-button">Upload Files</label>
+        <mat-divider class="divider"></mat-divider>
+
+        <h4 *ngIf="uploadedFiles.length">Uploaded Files:</h4>
+        <mat-list *ngIf="uploadedFiles.length">
+          <div class="file-item" *ngFor="let file of uploadedFiles">
+            <span>{{ file.name }}</span>
+            <mat-icon
+              color="warn"
+              (click)="deleteFile(file.name)"
+              aria-label="Delete file"
+              matTooltip="Delete file"
+              >delete</mat-icon
+            >
+          </div>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

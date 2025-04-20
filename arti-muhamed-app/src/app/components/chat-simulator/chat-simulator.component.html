@@ -1,0 +1,31 @@
+<div class="page-container">
+  <mat-card class="upload-card">
+    <mat-card-title class="card-title">Chat Simulator </mat-card-title>
+    <p *ngIf="chatbotConfig">Chat with {{ chatbotConfig.name }}!</p>
+    <mat-card-content class="chat-history">
+      <div *ngFor="let msg of chatHistory" [ngClass]="msg.sender">
+        <span class="bubble">
+          <strong *ngIf="msg.sender === 'bot'"
+            >{{ chatbotConfig.name }}:</strong
+          >
+          {{ msg.message }}
+        </span>
+        <div class="timestamp">
+          {{ msg.created_timestamp | date : "short" }}
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="input-area">
+      <input
+        matInput
+        [(ngModel)]="userInput"
+        (keyup.enter)="sendMessage()"
+        placeholder="Type your message..."
+      />
+      <button mat-raised-button color="primary" (click)="sendMessage()">
+        Send
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
