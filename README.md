@@ -1,9 +1,9 @@
 # ArtiAngularTask
 
-Development environment used: Visual Studio Code
-Node version used: v20.9.0
-Package manager - npm version used: 10.1.0
-Angular version used: 17.2.0
+- Development environment used: Visual Studio Code
+- Node version used: v20.9.0
+- Package manager - npm version used: 10.1.0
+- Angular version used: 17.2.0
 
 Setup instructions
   - Clone the repository: 
@@ -37,6 +37,7 @@ Why I didn't choose Long polling or SSE?
     - Scalability 
 
 3. Any libraries/tools you'd consider using in Angular?
+
   When I decided to add real-time capabilities to my Angular chatbot application, the WebSocket protocol was the clear choice for transport. However, working directly with raw WebSockets requires a lot of handling of connection management, reconnections, message formatting, and fallbacks.
   To solve these challenges, I chose Socket.IO, a library that builds on top of WebSockets and abstracts many of the implementation complexities. It provided the stability, structure, and developer experience I needed to confidently implement reliable two-way messaging between my client and server.
   Socket.IO uses a simple event-driven model. I can emit and listen for named events like 'chatMessage', 'userTyping', or 'botResponse' instead of parsing raw messages. This aligns well with Angular’s component and service architecture, making the codebase easier to read, maintain, and extend.
@@ -47,7 +48,8 @@ Using ngx-socket-io, I can:
     - Automatically unsubscribe on component destruction
     - Structure real-time code in a way that’s testable and modular
 
-4. What would you improve with more time?
+5. What would you improve with more time?
+
    Right now, chatbot replies are simulated using static logic or keyword matching. I would replace this with actual natural language processing by integrating a service like OpenAI, LangChain, or a local LLM.
 This would allow the chatbot to generate intelligent, context-aware responses and create a more human-like conversational experience.
 
