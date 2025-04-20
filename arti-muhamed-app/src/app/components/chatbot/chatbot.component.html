@@ -1,10 +1,4 @@
 <div class="page-container">
-  <h1 class="page-title">Chatbot Builder</h1>
-  <p class="page-description">
-    Define your chatbot's basic characteristics and personality. All saved
-    locally!
-  </p>
-
   <div class="form-upload-wrapper">
     <form
       class="form-container"
@@ -57,14 +51,24 @@
           </div>
         </mat-card-content>
 
-        <mat-card-actions>
+        <mat-divider></mat-divider>
+
+        <mat-card-actions class="chatbot-actions">
           <button
             mat-raised-button
             color="primary"
             type="submit"
             [disabled]="!chatbotForm.valid"
           >
-            Save Chatbot
+            {{ isEditMode ? "Update Chatbot" : "Create Chatbot" }}
+          </button>
+          <button
+            *ngIf="isEditMode"
+            mat-raised-button
+            color="warn"
+            (click)="deleteChatbot()"
+          >
+            Delete
           </button>
         </mat-card-actions>
       </mat-card>

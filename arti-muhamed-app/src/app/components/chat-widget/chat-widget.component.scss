@@ -1,0 +1,32 @@
+.chat-toggle-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1001;
+}
+
+.chat-popup {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  width: 360px;
+  max-width: 100%;
+}
+
+.chat-widget-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chat-span {
+  font-size: 14px;
+}
+
+@media (max-width: 400px) {
+  .chat-popup {
+    width: 90%;
+    right: 5%;
+  }
+}

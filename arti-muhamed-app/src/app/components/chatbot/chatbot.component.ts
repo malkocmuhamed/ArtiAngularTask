@@ -43,6 +43,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class ChatbotComponent implements OnInit {
   chatbotForm: FormGroup;
   uploadedFiles: StoredFile[] = [];
+  existingConfig: Chatbot | null = null;
+  isEditMode = false;
 
   constructor(
     private fb: FormBuilder,
@@ -58,6 +60,15 @@ export class ChatbotComponent implements OnInit {
 
   ngOnInit() {
     this.uploadedFiles = this.localStorageService.getFiles();
+    this.existingConfig = this.localStorageService.getChatbotConfig();
+
+    this.chatbotForm = this.fb.group({
+      name: [this.existingConfig?.name || '', Validators.required],
+      personality: [this.existingConfig?.personality ?? 0.5],
+      description: [this.existingConfig?.description || ''],
+    });
+
+    this.isEditMode = !!this.existingConfig;
   }
 
   showToastrMessage(
@@ -76,12 +87,28 @@ export class ChatbotComponent implements OnInit {
       const chatBotData: Chatbot = this.chatbotForm.value;
       this.localStorageService.saveChatbotConfig(chatBotData);
       this.showToastrMessage(
-        'Chatbot data saved successfully!',
+        this.isEditMode
+          ? 'Chatbot data updated'
+          : 'Chatbot data saved successfully!',
         'Success',
         'success',
         true
       );
+      this.isEditMode = true;
     }
+  }
+
+  deleteChatbot() {
+    this.localStorageService.clearChatbotConfig();
+    this.chatbotForm.reset({
+      name: '',
+      personality: 0.5,
+      description: '',
+    });
+
+    this.isEditMode = false;
+    this.existingConfig = null;
+    this.showToastrMessage('Chatbot deleted', 'Info', 'info', true);
   }
 
   onFileSelected(event: Event): void {

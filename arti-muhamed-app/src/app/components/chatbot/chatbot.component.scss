@@ -70,6 +70,11 @@ mat-divider {
   gap: 40px;
 }
 
+.chatbot-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (max-width: 600px) {
   .page-title {
     font-size: 1.6rem;

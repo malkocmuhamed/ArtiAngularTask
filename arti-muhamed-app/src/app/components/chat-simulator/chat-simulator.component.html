@@ -1,17 +1,19 @@
-<div class="page-container">
+<div class="simulator-container">
   <mat-card class="upload-card">
     <mat-card-title class="card-title">Chat Simulator </mat-card-title>
     <p *ngIf="chatbotConfig">Chat with {{ chatbotConfig.name }}!</p>
     <mat-card-content class="chat-history">
       <div *ngFor="let msg of chatHistory" [ngClass]="msg.sender">
-        <span class="bubble">
-          <strong *ngIf="msg.sender === 'bot'"
-            >{{ chatbotConfig.name }}:</strong
-          >
-          {{ msg.message }}
-        </span>
-        <div class="timestamp">
-          {{ msg.created_timestamp | date : "short" }}
+        <div class="bubble-timestamp">
+          <span class="bubble">
+            <strong *ngIf="msg.sender === 'bot'"
+              >{{ chatbotConfig.name }}:</strong
+            >
+            {{ msg.message }}
+          </span>
+          <div class="timestamp">
+            {{ msg.created_timestamp | date : "short" }}
+          </div>
         </div>
       </div>
     </mat-card-content>
