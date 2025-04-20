@@ -48,7 +48,7 @@ Using ngx-socket-io, I can:
     - Automatically unsubscribe on component destruction
     - Structure real-time code in a way that’s testable and modular
 
-5. What would you improve with more time?
+4. What would you improve with more time?
 
    Right now, chatbot replies are simulated using static logic or keyword matching. I would replace this with actual natural language processing by integrating a service like OpenAI, LangChain, or a local LLM.
 This would allow the chatbot to generate intelligent, context-aware responses and create a more human-like conversational experience.
