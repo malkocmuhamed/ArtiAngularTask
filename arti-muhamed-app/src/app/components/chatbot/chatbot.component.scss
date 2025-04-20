@@ -1,0 +1,103 @@
+.page-container {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem;
+}
+
+.card-title {
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.slider-section {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.slider-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+mat-slider {
+  width: 60%;
+  display: block;
+  margin: auto;
+}
+
+mat-divider {
+  margin: 10px 0px;
+}
+
+.upload-card {
+  justify-self: center;
+  margin-top: 30px;
+}
+
+.upload-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border: 1px solid #0056b32e;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .page-description {
+    font-size: 1rem;
+  }
+
+  mat-card {
+    margin: 0.5rem;
+  }
+
+  mat-slider {
+    width: 80%;
+  }
+}
