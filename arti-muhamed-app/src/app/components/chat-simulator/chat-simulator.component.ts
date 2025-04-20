@@ -10,6 +10,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { StoredFile } from '../../models/stored-file.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-chat-simulator',
@@ -22,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatTooltipModule,
     MatIconModule,
+    MatDividerModule,
   ],
   templateUrl: './chat-simulator.component.html',
   styleUrl: './chat-simulator.component.scss',

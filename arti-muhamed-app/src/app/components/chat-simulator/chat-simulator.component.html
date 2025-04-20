@@ -1,7 +1,7 @@
 <div class="simulator-container">
   <mat-card class="upload-card">
     <div class="title-clear">
-      <mat-card-title class="card-title">Chat Simulator </mat-card-title>
+      <mat-card-title class="chat-title">Chat Simulator </mat-card-title>
       <button
         *ngIf="chatHistory.length"
         class="send-button"
@@ -13,6 +13,7 @@
       </button>
     </div>
     <p *ngIf="chatbotConfig">Chat with {{ chatbotConfig.name }}!</p>
+    <mat-divider></mat-divider>
     <mat-card-content class="chat-history">
       <div *ngFor="let msg of chatHistory" [ngClass]="msg.sender">
         <div class="bubble-timestamp">
