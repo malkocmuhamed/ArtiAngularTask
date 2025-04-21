@@ -9,8 +9,9 @@ Setup instructions
 
   - Clone the repository: 
       git clone https://github.com/malkocmuhamed/ArtiAngularTask.git
-      or Open with Github desktop
-      or download Zip
+  - Navigate to app folder:
+      cd ArtiAngularTask
+      cd arti-muhamed-app
   - Run following command in the project root to install packages:
       npm install
   - If not, Angular CLI needs to be installed. Command for installing:
